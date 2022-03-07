@@ -16,15 +16,19 @@ const updateCartItem = (item) => {
         'Type': item.Type
     })
 }
-const isValidDataPresent = (itemName,itemQuantity) =>  (itemName.length >0 && itemQuantity.length>0) ?  true : false 
+const isBothInputDataPresent = (itemName,itemQuantity) =>  (itemName.length >0 && itemQuantity.length>0) ?  true : false 
+const isAnyInputDataPresent = (itemName,itemQuantity,itemDescription) =>  (itemName.length >0 || 
+            itemQuantity.length>0 || itemDescription.length>0) ?  true : false 
 
 const onItemDetailsChange = () => {
-    console.log($('#ItemName').val().length,$('#ItemQuantity').val().length);
-     if(isValidDataPresent($('#ItemName').val(),$('#ItemQuantity').val())){
-        $('#AddToCart').prop('disabled',false)
-     }else{ 
-        $('#AddToCart').prop('disabled',true)
-     }
+    let itemName  = $('#ItemName').val()
+    let itemQuantity = $('#ItemQuantity').val()
+    let itemDescription = $('#ItemDescription').val()
+     
+    $('#AddToCart').prop('disabled',!isBothInputDataPresent(itemName,itemQuantity))
+    
+    $('#ClearBtn').prop('disabled',!isAnyInputDataPresent(itemName,itemQuantity,itemDescription))
+ 
 }
 
 const onItemNameChange = () => $('#ItemName').val().length>0
@@ -34,7 +38,7 @@ const addItemToCart = () => {
     let itemDescription = $('#ItemDescription').val()
     let itemQuantity = $('#ItemQuantity').val()
     let itemType = $('#ItemType').val()
-    if(isValidDataPresent(itemName,itemQuantity)){ 
+    if(isBothInputDataPresent(itemName,itemQuantity)){ 
         cartItemList.push({
             'Name': itemName,
             'Description': itemDescription,
@@ -53,6 +57,8 @@ const clearInputField = () => {
     $('#ItemName').val('')
     $('#ItemDescription').val('')
     $('#ItemQuantity').val('') 
+    $('#AddToCart').prop('disabled',true)
+    $('#ClearBtn').prop('disabled',true)
 }
 
 $(document).ready(() => {
