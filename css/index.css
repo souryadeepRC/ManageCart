@@ -12,6 +12,33 @@ header>img{
     box-shadow: inset 2px 1px 9px 3px #d1c6c6;
     transition: 0.5s;
 }
+.item-input-box{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    padding: 2rem 0;
+    box-shadow: 2px 2px 17px 4px #cbc8c8;
+    padding: 2rem;
+    margin: 1.5rem auto;
+}
+ input ,  select{
+    border: none; 
+    border-bottom: 1px solid black;
+    margin-top: 1.2rem;
+    text-align: center;
+}
+.item-input-box>div{
+    margin-top: 1.2rem;
+}
+.item-input-box>div>input , .item-input-box>div>select{
+    margin: 0;
+}
+*:focus {
+    outline: none;
+}
 select>option{
     text-align: left;
     background : rgb(171, 206, 240);
@@ -28,6 +55,14 @@ select>option:selected{
     .cart-box>p{ 
         width: 2rem;
     } 
+    header>img{
+        width: 5%;
+    }
+}
+@media screen and (min-width:800px){
+    .item-input-box{
+        width: 60%;
+    }
     header>img{
         width: 3%;
     }

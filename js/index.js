@@ -16,17 +16,36 @@ const updateCartItem = (item) => {
         'Type': item.Type
     })
 }
-
+const isValidDataPresent = (itemName,itemQuantity,itemType) => {
+     
+    return true
+}
+const addItemToCart = () => {
+    let itemName  = $('#ItemName').val()
+    let itemDescription = $('#ItemDescription').val()
+    let itemQuantity = $('#ItemQuantity').val()
+    let itemType = $('#ItemType').val()
+    if(isValidDataPresent(itemName,itemQuantity,itemType)){ 
+        cartItemList.push({
+            'Name': itemName,
+            'Description': itemDescription,
+            'Quantity': itemQuantity,
+            'Type': itemType
+        })
+        return true
+    }else{
+        return false
+    }
+}
 $(document).ready(() => {
     console.log('Manage Cart Loaded ...');
     renderCartItemCount()
     $('#AddToCart').on('click', () => {
-        cartItemList.push({
-            'Name': 'Cold Drinks',
-            'Description': 'Pepsi can',
-            'Quantity': '2',
-            'Type': 'Pc.'
-        })
-        renderCartItemCount()
+        if(addItemToCart()){
+            console.log('Item Added to Cart');
+            renderCartItemCount()
+        }else{
+            console.log('ITem Not Added');
+        }
     })
 })
