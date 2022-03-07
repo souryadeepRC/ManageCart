@@ -48,6 +48,12 @@ select>option{
 select>option:selected{
     background: red;
 }
+.success-msg{
+    border-radius: 8px;
+    display: none;
+    opacity: 1; 
+    width: 90%;
+} 
 @media screen and (min-width:480px){
     header>h5,header>i{
         font-size: 1.5rem !important;

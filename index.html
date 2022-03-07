@@ -25,12 +25,16 @@
             <p class="m-0" id="CartItemCount"></p>
         </div> 
     </header>
-    <article id="Content">
+    <article id="Content"> 
+            <p id="SuccessMsg" class="success-msg bg-success fw-bold m-0 m-auto my-2 py-2 text-center text-white w-75">Item Added to Cart Successfully</p>
+         
         <div class="item-input-box">
-            <input type="text" name="ItemName" id="ItemName" placeholder="Item Name" value="Cold Drink">
-            <input type="text" name="ItemDescription" id="ItemDescription" placeholder="Item Description" value="Coca Cola">
+            <input type="text" name="ItemName" id="ItemName" placeholder="Item Name *"  
+            onkeyup="onItemDetailsChange()">
+            <input type="text" name="ItemDescription" id="ItemDescription" placeholder="Item Description">
             <div class="d-flex">
-                <input class="w-75" type="text" name="ItemQuantity" id="ItemQuantity" placeholder="Item Quantity" value="250">
+                <input class="w-75" type="text" name="ItemQuantity" id="ItemQuantity" placeholder="Item Quantity *" 
+                onkeyup="onItemDetailsChange()">
                 <select class="w-25" name="ItemType" id="ItemType">
                     <option value="Kg">Kg</option>
                     <option value="gm">gm</option>
@@ -41,7 +45,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center py-2">
-            <button class="btn btn-primary" id="AddToCart"><i class="fa fa-plus"></i>&nbsp;Add Item</button>
+            <button class="btn btn-primary" id="AddToCart" disabled><i class="fa fa-plus"></i>&nbsp;Add Item</button>
         </div>
 
     </article>
