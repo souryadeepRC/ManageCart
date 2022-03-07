@@ -1,0 +1,35 @@
+ 
+header>img{
+    width: 10%;
+} 
+.cart-box>p{  
+    font-weight: bold;
+    background: white;
+    color: black;
+    width: 1.8rem;
+    text-align: center;
+    border-radius: 40%; 
+    box-shadow: inset 2px 1px 9px 3px #d1c6c6;
+    transition: 0.5s;
+}
+select>option{
+    text-align: left;
+    background : rgb(171, 206, 240);
+    color: black;
+    font-weight: bold;
+}
+select>option:selected{
+    background: red;
+}
+@media screen and (min-width:480px){
+    header>h5,header>i{
+        font-size: 1.5rem !important;
+    }
+    .cart-box>p{ 
+        width: 2rem;
+    } 
+    header>img{
+        width: 3%;
+    }
+}
+
