@@ -1,218 +1,192 @@
- 
-.w-15 {
-    width: 15%;
-} 
-/* ------ Header Section of Page */
-header{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background: black;
-    color: #80c5fd;
-    padding: 0.5rem 0;
-}
-header>h5{
-    margin: 0;
-}
-header>div{
-    display: flex;
-    align-items: center;
-}
-header>img {
-    width: 8%;
-}
-.cart-box {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-.cart-box>p {
-    margin: 0;
-    font-weight: bold;
-    background: white;
-    color: black;
-    width: 1.7rem;
-    font-size: 0.8rem;
-    text-align: center;
-    border-radius: 40%;
-    box-shadow: inset 2px 1px 9px 3px #d1c6c6;
-    transition: 0.5s;
-}
+ /* ------ Header Section of Page */
+ header>h5 {
+     font-size: 0.9rem;
+ }
 
-@media screen and (min-width:480px) {
-    header>h5, header>i {
-        font-size: 1.5rem !important;
-    }
-    .cart-box>p {
-        width: 2rem;
-        font-size: 0.9rem;
-    }
-    header>img {
-        width: 5%;
-    }
-}
+ header>img {
+     width: 8%;
+ }
 
-@media screen and (min-width:800px) {
-    header>img {
-        width: 3%;
-    }
-}
-/* ------ Header Section of Page */
+ .cart-box>p {
+     width: 1.7rem;
+     font-size: 0.8rem;
+     border-radius: 40%;
+     box-shadow: inset 2px 1px 9px 3px #d1c6c6;
+     transition: 0.5s;
+ }
+
+ /* ------ Cart Fill up Section */
+ .success-msg {
+     border-radius: 8px;
+     display: none;
+     width: 75%;
+     font-size: 0.6rem;
+ }
 
 
-.item-input-box {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    width: 80%;
-    margin: auto;
-    padding: 2rem 0;
-    box-shadow: 2px 2px 17px 4px #cbc8c8;
-    padding: 2rem;
-    margin: 1.5rem auto;
-}
+ .item-input-box {
+     width: 90%;
+     box-shadow: 2px 2px 17px 4px #cbc8c8;
+     border-radius: 3%;
+ }
 
-input, select {
-    border: none;
-    border-bottom: 1px solid black;
-    margin-top: 1.2rem;
-    text-align: center;
-}
+ .item-input-box>div {
+     border-bottom: 1px solid black;
+     margin-top: 0.8rem;
+ }
 
-.item-input-box>div {
-    margin-top: 1.2rem;
-}
+ input, select {
+     border: none;
+     text-align: center;
+     font-size: 0.8rem;
+ }
 
-.item-input-box>div>input, .item-input-box>div>select {
-    margin: 0;
-}
+ select {
+     width: 40%;
+     border: none;
+ }
 
-*:focus {
-    outline: none;
-}
+ *:focus {
+     outline: none;
+ }
 
-select>option {
-    text-align: left;
-    background: rgb(171, 206, 240);
-    color: black;
-    font-weight: bold;
-}
+ .cart-form-button>button {
+     width: 100%;
+ }
 
-select>option:selected {
-    background: red;
-}
 
-.success-msg {
-    border-radius: 8px;
-    display: none;
-    opacity: 1;
-    width: 90%;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-}
+ .cart-info {
+     height: 73vh;
+     overflow-y: scroll;
+     width: 90%;
+     margin: auto;
+     padding: 0 0.75rem;
+ }
 
-.cart-info {
-    height: 73vh;
-    overflow-y: scroll;
-    width: 90%;
-    margin: auto;
-}
+ .cart-item h6 {
+     font-size: 14px;
+ }
 
-.cart-item {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: auto;
-    width: 100%;
-}
+ .print {
+     display: none;
+ }
 
-.cart-item h6, .cart-item p {
-    margin: 0;
-}
+ .cart-data {
+     font-size: 12px;
+     border-radius: 10px;
+     background: #d0e5a6;
+     box-shadow: inset 1px 1px 10px 1px green;
+ }
 
-.print {
-    display: none;
-}
+ .delete-item {
+     font-size: 16px;
+     padding: 4px 0;
+     border-radius: 11px;
+     background: #34684b;
+ }
 
-.receipt-heading {
-    text-align: center;
-    background: cornflowerblue;
-    color: white;
-    width: 90%;
-    margin: auto;
-    padding: 0.5rem;
-}
+ ::-webkit-scrollbar {
+     width: 5px;
+ }
 
-table {
-    width: 90%;
-    margin: auto;
-}
+ ::-webkit-scrollbar-track {
+     background: rgb(238, 237, 237);
+ }
 
-.cart-data {
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    font-size: 12px;
-    border-radius: 10px;
-    background: #d0e5a6;
-    box-shadow: inset 1px 1px 10px 1px green;
-}
+ ::-webkit-scrollbar-thumb {
+     background: green;
+     border-radius: 5px;
+ }
 
-.delete-item {
-    font-size: 16px;
-    padding: 4px 0;
-    border-radius: 11px;
-    background: #34684b;
-    color: white;
-}
+ @media print {
+     .print {
+         display: block;
+     }
 
-::-webkit-scrollbar {
-    width: 5px;
-}
+     .not-print {
+         display: none !important;
+     }
 
-::-webkit-scrollbar-track {
-    background: rgb(238, 237, 237);
-}
+     .cart-data {
+         background: white !important;
+         border-radius: 0;
+         box-shadow: none;
+         padding: 0;
+         border-bottom: 1px solid black;
+     }
 
-::-webkit-scrollbar-thumb {
-    background: green;
-    border-radius: 5px;
-}
+     .cart-info {
+         height: auto;
+         overflow-y: hidden;
+     }
+ }
 
-@media print {
-    .print {
-        display: block;
-    }
+ @media screen and (min-width:480px) {
 
-    .not-print {
-        display: none !important;
-    }
+     header>h5, header>i {
+         font-size: 1.5rem !important;
+     }
 
-    .cart-data {
-        background: white !important;
-        border-radius: 0;
-        box-shadow: none;
-        padding: 0;
-        border-bottom: 1px solid black;
-    }
+     .cart-box>p {
+         width: 2rem;
+         font-size: 0.9rem;
+     }
 
-    .cart-info {
-        height: auto;
-        overflow-y: hidden;
-    }
-}
+     header>img {
+         width: 5%;
+     }
 
-@media screen and (min-width:480px) {
-    .cart-data {
-        padding: 0.5rem;
-        margin: 0.5rem 0;
-        font-size: 16px;
-    }
-}
+     .success-msg {
+         font-size: 1rem;
+         width: 80%;
+     }
 
-@media screen and (min-width:800px) {
-    .item-input-box {
-        width: 60%;
-    }
-}
+     .item-input-box {
+         border-radius: 2%;
+         width: 65%;
+     }
+
+     input, select {
+         font-size: 1rem;
+     }
+
+     .show-cart-button {
+         flex-direction: row !important;
+         justify-content: space-around !important;
+     }
+
+     .show-cart-button>button {
+         width: 40%;
+     }
+
+     .cart-data {
+         font-size: 16px;
+     }
+
+     .cart-item h6 {
+         font-size: 16px;
+     }
+
+     .cart-info {
+         width: 85%;
+     }
+ }
+
+ @media screen and (min-width:800px) {
+
+     header>img {
+         width: 3%;
+     }
+
+     .item-input-box {
+         width: 60%;
+     }
+
+     .cart-form-button>button {
+         width: 25%;
+     }
+
+     .cart-info {
+         width: 50%;
+     }
+ }

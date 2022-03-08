@@ -14,32 +14,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+    <link rel="stylesheet" type="text/css" href="css/default.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <script type="text/javascript" src="test/test_script.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 </head>
 
 <body>
-    <!-- Header Section of Page -->
-    <header class="not-print">
+    <!-- Header Section of Page-->
+    <header class="not-print align-items-center bg-black d-flex justify-content-evenly py-2 text-info">
         <img src="images/logo.png" alt="App Logo">
-        <h5>Manage Cart</h5>
-        <div class="cart-box" onclick="ShowCart()">
+        <h5 class="m-0">Manage Cart</h5>
+        <div class="align-items-center cart-box d-flex cursor-pointer" onclick="ShowCart()">
             <i class="fa fa-shopping-basket"></i>
-            <p id="CartItemCount"></p>
+            <p class="m-0 fw-bold bg-white text-black text-center" id="CartItemCount"></p>
         </div>
     </header>
     <article id="Content">
-        <p id="SuccessMsg" class="success-msg bg-success mx-auto my-2 py-2">Item Added
+        <p id="SuccessMsg" class="success-msg bg-success mx-auto my-2 py-2 opacity-100 fw-bold text-white text-center">
+            Item Added
             to Cart Successfully</p>
 
-        <div class="item-input-box">
-            <input type="text" name="ItemName" id="ItemName" placeholder="Item Name *" onkeyup="onItemDetailsChange()">
-            <input type="text" name="ItemDescription" id="ItemDescription" placeholder="Item Description">
-            <div class="d-flex">
-                <input class="w-75" type="text" name="ItemQuantity" id="ItemQuantity" placeholder="Item Quantity *"
+        <div class="align-items-stretch d-flex flex-column item-input-box justify-content-center mx-auto my-2 p-4">
+            <div class=" text-center">
+                <input type="text" class="border-0" name="ItemName" id="ItemName" placeholder="Item Name *"
                     onkeyup="onItemDetailsChange()">
-                <select class="w-25" name="ItemType" id="ItemType">
+            </div>
+            <div class=" text-center">
+                <input type="text" class="border-0" name="ItemDescription" id="ItemDescription" placeholder="Item Description">
+            </div>
+            <div class="d-flex text-center">
+                <input class="w-60 border-0" type="text" name="ItemQuantity" id="ItemQuantity" placeholder="Item Quantity *"
+                    onkeyup="onItemDetailsChange()">
+                <select class="w-40 border-0" name="ItemType" id="ItemType">
                     <option value="Kg">Kg</option>
                     <option value="gm">gm</option>
                     <option value="litre">litre</option>
@@ -48,24 +55,25 @@
                 </select>
             </div>
         </div>
-        <div class="d-flex justify-content-center py-2">
-            <button class="mx-2 btn btn-primary" id="AddToCart" disabled><i class="fa fa-plus"></i>&nbsp;Add
-                Item</button>
-            <button class="mx-2 btn btn-primary" id="ClearBtn" onClick="clearInputField()" disabled>Clear</button>
-            <button class="mx-2 btn btn-primary" id="EmptyCartBtn" onClick="emptyCart()" disabled>Empty Cart</button>
+        <div class="d-flex flex-wrap justify-content-around py-2 w-75 m-auto cart-form-button">
+            <button class="my-1 btn btn-primary" id="AddToCart" disabled>
+                <i class="fa fa-plus"></i>&nbsp;Add Item</button>
+            <button class="my-1 btn btn-primary" id="ClearBtn" onClick="clearInputField()" disabled>Clear</button>
+            <button class="my-1 btn btn-primary" id="EmptyCartBtn" onClick="emptyCart()" disabled>Empty Cart</button>
         </div>
 
     </article>
     <article id="CartDetail">
-        <div class="not-print d-flex flex-column justify-content-center py-2 w-75 m-auto">
-            <button class="my-1 btn btn-primary" id="GoBackInputForm" onclick="addMoreItem()">Add more Item</button>
-            <button class="my-1 btn btn-primary" id="PrintReceiptBtn" onclick="printReceipt()">Print Recipt</button>
+        <div class="show-cart-button not-print d-flex flex-column justify-content-center py-2 w-75 m-auto">
+            <button class="my-1 p-1 btn btn-primary" id="GoBackInputForm" onclick="addMoreItem()">Add more Item</button>
+            <button class="my-1 p-1 btn btn-primary" id="PrintReceiptBtn" onclick="printReceipt()">Print Recipt</button>
         </div>
         <div class="cart-info">
-            <table>
+            <table class="m-90 m-auto">
                 <thead>
                     <tr>
-                        <th class="print receipt-heading">Your Cart Detail for <span id="CartCount"></span> items</th>
+                        <th class="print receipt-heading fw-bold text-center text-white w-90 m-auto bg-primary p-2">
+                            Cart Detail for <span id="CartCount"></span> items</th>
                     </tr>
                 </thead>
                 <tbody id="CartItemSection"></tbody>
