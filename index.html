@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-    <link rel="stylesheet" type="text/css" href="css/index.css"> 
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <script type="text/javascript" src="test/test_script.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 </head>
@@ -51,20 +51,23 @@
             <button class="mx-2 btn btn-primary" id="AddToCart" disabled><i class="fa fa-plus"></i>&nbsp;Add
                 Item</button>
             <button class="mx-2 btn btn-primary" id="ClearBtn" onClick="clearInputField()" disabled>Clear</button>
+            <button class="mx-2 btn btn-primary" id="EmptyCartBtn" onClick="emptyCart()" disabled>Empty Cart</button>
         </div>
 
     </article>
     <article id="CartDetail">
         <div class="not-print d-flex flex-column justify-content-center py-2 w-75 m-auto">
-            <button class="my-1 btn btn-primary" id="GoBackInputForm">Add more Item</button>
+            <button class="my-1 btn btn-primary" id="GoBackInputForm" onclick="addMoreItem()">Add more Item</button>
             <button class="my-1 btn btn-primary" id="PrintReceiptBtn" onclick="printReceipt()">Print Recipt</button>
         </div>
         <div class="cart-info">
-            <table> 
+            <table>
                 <thead>
-                    <tr><th class="print receipt-heading">Your Cart Detail for <span id="CartCount"></span> items</th></tr>
+                    <tr>
+                        <th class="print receipt-heading">Your Cart Detail for <span id="CartCount"></span> items</th>
+                    </tr>
                 </thead>
-                <tbody   id="CartItemSection"></tbody>
+                <tbody id="CartItemSection"></tbody>
             </table>
         </div>
     </article>

@@ -48,6 +48,7 @@ const addItemToCart = () => {
         clearInputField()
         $('#SuccessMsg').show().delay(1000).fadeOut()
         $('#AddToCart').prop('disabled', true)
+        $('#EmptyCartBtn').prop('disabled', !(cartItemList.length > 0))
         return true
     } else {
         return false
@@ -60,51 +61,65 @@ const clearInputField = () => {
     $('#AddToCart').prop('disabled', true)
     $('#ClearBtn').prop('disabled', true)
 }
+const deleteItem = (index) => {
+    console.log(`deleteItem ${index}`);
+    console.log(cartItemList[index]);
+    cartItemList.splice(index, 1)
+    console.log(cartItemList);
+    ShowCart()
+}
+
 const ShowCart = () => {
-     let content = ''
-     cartItemList.forEach((cartItem,index) => {
-        content += `
-        <tr><td><div class="cart-data">
-            <div class="cart-item col-12 d-flex justify-content-around">
-                <p class="print col-2">${index+1}</p>
-                <div class="col-8">
-                    <h6>${cartItem.Name}</h6>
-                    <p>${cartItem.Description!='' ? cartItem.Description : '&nbsp;'}</p>
-                </div>
-                <h6 class="col-3 text-center">${cartItem.Quantity} ${cartItem.Type}</h6>
-            </div>
-            <p class="delete-item not-print m-0 text-end" id="ItemDelete${index}"><i class="fa fa-trash-o"></i></p>
-            </div></td>
-        </tr>
-        `
-    });
-    /* cartItemList.forEach((cartItem,index) => {
-        content += `
-        <div class="bg-info cart-data m-auto p-3 my-1 w-75">
-            <div class="cart-item col-12">
-                <p class="col-2">${index+1}</p>
-                <div class="col-8">
-                    <h6>${cartItem.Name}</h6>
-                    <p>${cartItem.Description}</p>
-                </div>
-                <h6 class="col-2">${cartItem.Quantity} ${cartItem.Type}</h6>
-            </div>
-            <p class="delete-item not-print m-0 pt-4 text-end" id="ItemDelete${index}">Delete</p>
-        </div>
-        `
-    }); */
-     $('#CartItemSection').html(content)
-     $('#CartCount').text(cartItemList.length)
+    clearInputField()
+    console.log(cartItemList);
     $('#CartDetail').show()
     $('#Content').hide()
+    if (cartItemList.length > 0) {
+        let content = ''
+        cartItemList.forEach((cartItem, index) => {
+            content += `
+           <tr><td><div class="cart-data">
+               <div class="cart-item col-12 d-flex justify-content-around">
+                   <p class="print col-2">${index + 1}</p>
+                   <div class="col-8">
+                       <h6>${cartItem.Name}</h6>
+                       <p>${cartItem.Description != '' ? cartItem.Description : '&nbsp;'}</p>
+                   </div>
+                   <h6 class="col-3 text-center">${cartItem.Quantity} ${cartItem.Type}</h6>
+               </div>
+               <div class="d-flex justify-content-end">
+                    <p class="w-15 delete-item not-print m-0 text-center fa fa-trash-o" 
+                        id="ItemDelete${index}" onclick="deleteItem(${index})"> </p>
+                </div>
+               </div></td>
+           </tr>
+           `
+        });
+        $('#CartItemSection').html(content)
+        $('#CartCount').text(cartItemList.length)
+    } else {
+        $('#CartItemSection').html(``)
+        $('#EmptyCart').show()
+    }
+
 }
-const printReceipt = () => { 
+const emptyCart = () => {
+    cartItemList = []
+    $('#EmptyCartBtn').prop('disabled', !(cartItemList.length > 0))
+    renderCartItemCount()
+}
+const addMoreItem = () => {
+    $('#CartDetail').hide()
+    $('#Content').show()
+}
+
+const printReceipt = () => {
     window.print()
 }
 $(document).ready(() => {
 
     cartItemList = loadCartData()
-
+    $('#EmptyCartBtn').prop('disabled', !(cartItemList.length > 0))
     console.log('Manage Cart Loaded ...');
     $('#CartDetail').hide()
     renderCartItemCount()
@@ -113,7 +128,7 @@ $(document).ready(() => {
             console.log('Item Added to Cart');
             renderCartItemCount()
         } else {
-            console.log('ITem Not Added');
+            console.log('Item Not Added');
         }
     })
 })
