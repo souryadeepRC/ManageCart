@@ -122,6 +122,7 @@ const showCart = () => {
         });
         $('#EmptyCartHeading').hide()
         $('#CartItemSection').html(content) 
+        $('#CartCount').text(`${cartItemList.length} ${ cartItemList.length >1? 'items' : 'item'}`)
     } else {
         $('#CartItemSection').html(``)
         $('#EmptyCartHeading').show() 
