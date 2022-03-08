@@ -25,7 +25,7 @@
     <header class="not-print align-items-center bg-black d-flex justify-content-evenly py-2 text-info">
         <img src="images/logo.png" alt="App Logo">
         <h5 class="m-0">Manage Cart</h5>
-        <div class="align-items-center cart-box d-flex cursor-pointer" onclick="ShowCart()">
+        <div class="align-items-center cart-box d-flex cursor-pointer" onclick="showCart()">
             <i class="fa fa-shopping-basket"></i>
             <p class="m-0 fw-bold bg-white text-black text-center" id="CartItemCount"></p>
         </div>
@@ -68,8 +68,9 @@
             <button class="my-1 p-1 btn btn-primary" id="GoBackInputForm" onclick="addMoreItem()">Add more Item</button>
             <button class="my-1 p-1 btn btn-primary" id="PrintReceiptBtn" onclick="printReceipt()">Print Recipt</button>
         </div>
+        <h6 class="text-center text-black" id="EmptyCartHeading">Empty Cart</h6>
         <div class="cart-info">
-            <table class="m-90 m-auto">
+            <table class="w-90 m-auto">
                 <thead>
                     <tr>
                         <th class="print receipt-heading fw-bold text-center text-white w-90 m-auto bg-primary p-2">

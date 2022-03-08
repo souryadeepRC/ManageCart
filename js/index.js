@@ -1,13 +1,17 @@
 var cartItemList = []
 const renderCartItemCount = () => {
     if (cartItemList.length > 0) {
-        $('#CartItemCount').css('display', 'block')
+        $('#CartItemCount').show()
         $('#CartItemCount').text(cartItemList.length)
     } else {
-
-        $('#CartItemCount').css('display', 'none')
+        $('#CartItemCount').hide()
     }
 }
+
+const onItemNameChange = () => $('#ItemName').val().length > 0
+const validateEmptyCartBtn = () => $('#EmptyCartBtn').prop('disabled', !(cartItemList.length > 0))
+const validatePrintReceiptBtn = () => $('#PrintReceiptBtn').prop('disabled', !(cartItemList.length > 0))
+const validateAddToCartBtn = (itemName,itemQuantity) =>  $('#AddToCart').prop('disabled', !isBothInputDataPresent(itemName, itemQuantity))
 const updateCartItem = (item) => {
     cartItemList.push({
         'Name': item.Name,
@@ -30,9 +34,14 @@ const onItemDetailsChange = () => {
     $('#ClearBtn').prop('disabled', !isAnyInputDataPresent(itemName, itemQuantity, itemDescription))
 
 }
-
-const onItemNameChange = () => $('#ItemName').val().length > 0
-
+ 
+/*  
+    1.  Adding Item To cartItemList
+    If Added Then
+        2.  Call clearInputField := clear input field, disable AddToCart & Clear Btn
+        3.  Call validateEmptyCartBtn := If no item in cartItemList => Disable EmptyCart Btn
+        4.  Call renderCartItemCount := update count of cartItemList
+ */
 const addItemToCart = () => {
     let itemName = $('#ItemName').val()
     let itemDescription = $('#ItemDescription').val()
@@ -46,14 +55,17 @@ const addItemToCart = () => {
             'Type': itemType
         })
         clearInputField()
-        $('#SuccessMsg').show().delay(1000).fadeOut()
-        $('#AddToCart').prop('disabled', true)
-        $('#EmptyCartBtn').prop('disabled', !(cartItemList.length > 0))
+        validateEmptyCartBtn()
+        renderCartItemCount()
         return true
     } else {
         return false
     }
 }
+/* 
+    1.  Clearing all data present in input file
+    2.  Disabling AddToCart & Clear Button 
+*/
 const clearInputField = () => {
     $('#ItemName').val('')
     $('#ItemDescription').val('')
@@ -61,17 +73,30 @@ const clearInputField = () => {
     $('#AddToCart').prop('disabled', true)
     $('#ClearBtn').prop('disabled', true)
 }
-const deleteItem = (index) => {
-    console.log(`deleteItem ${index}`);
-    console.log(cartItemList[index]);
-    cartItemList.splice(index, 1)
-    console.log(cartItemList);
-    ShowCart()
+/*
+    1.  Removing Indexed Item from cartItemList
+    2.  Call showCart := Load Total Cart
+    3.  Call renderCartItemCount := update count of cartItemList
+    4.  Call validateEmptyCartBtn := If no item in cartItemList => Disable EmptyCart Btn
+*/
+const deleteItem = (index) => { 
+    cartItemList.splice(index, 1) 
+    showCart()
+    renderCartItemCount()
+    validateEmptyCartBtn()
 }
-
-const ShowCart = () => {
-    clearInputField()
-    console.log(cartItemList);
+/*
+    1.  Call clearInputField := clear input field, disable AddToCart & Clear Btn
+    2.  Show -> CartDetail  ,   Hide -> Content
+    3.  If cartItemList has item THEN
+        4.  Load Item in Table & Hide EmptyCartHeading
+    ELSE
+        5.  Load Blank Table & show EmptyCartHeading
+    6.  Call validatePrintReceiptBtn := enable PrintReceipt Btn if cartItemList not empty
+    7.  Call renderCartItemCount := update count of cartItemList
+*/
+const showCart = () => {
+    clearInputField() 
     $('#CartDetail').show()
     $('#Content').hide()
     if (cartItemList.length > 0) {
@@ -95,13 +120,14 @@ const ShowCart = () => {
            </tr>
            `
         });
-        $('#CartItemSection').html(content)
-        $('#CartCount').text(cartItemList.length)
+        $('#EmptyCartHeading').hide()
+        $('#CartItemSection').html(content) 
     } else {
         $('#CartItemSection').html(``)
-        $('#EmptyCart').show()
-    }
-
+        $('#EmptyCartHeading').show() 
+    } 
+    validatePrintReceiptBtn()
+    renderCartItemCount()
 }
 const emptyCart = () => {
     cartItemList = []
@@ -117,20 +143,13 @@ const printReceipt = () => {
     window.print()
 }
 $(document).ready(() => {
-
-    cartItemList = loadCartData()
-    populateInputField()
-
-    $('#EmptyCartBtn').prop('disabled', !(cartItemList.length > 0))
-    console.log('Manage Cart Loaded ...');
+  
+    validateEmptyCartBtn() 
     $('#CartDetail').hide()
     renderCartItemCount()
     $('#AddToCart').on('click', () => {
-        if (addItemToCart()) {
-            console.log('Item Added to Cart');
-            renderCartItemCount()
-        } else {
-            console.log('Item Not Added');
-        }
+        if (addItemToCart()) { 
+            $('#SuccessMsg').show().delay(1000).fadeOut()
+        } 
     })
 })
