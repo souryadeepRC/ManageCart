@@ -36,6 +36,7 @@
  }
 
  input, select {
+     width: 100%;
      border: none;
      text-align: center;
      font-size: 0.8rem;
