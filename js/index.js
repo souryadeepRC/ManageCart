@@ -8,6 +8,7 @@ const renderCartItemCount = () => {
     }
 }
 
+const printReceipt = () =>  window.print() 
 const onItemNameChange = () => $('#ItemName').val().length > 0
 const validateEmptyCartBtn = () => $('#EmptyCartBtn').prop('disabled', !(cartItemList.length > 0))
 const validatePrintReceiptBtn = () => $('#PrintReceiptBtn').prop('disabled', !(cartItemList.length > 0))
@@ -134,15 +135,13 @@ const emptyCart = () => {
     cartItemList = []
     $('#EmptyCartBtn').prop('disabled', !(cartItemList.length > 0))
     renderCartItemCount()
+    showCart()
 }
 const addMoreItem = () => {
     $('#CartDetail').hide()
     $('#Content').show()
 }
 
-const printReceipt = () => {
-    window.print()
-}
 $(document).ready(() => {
   
     validateEmptyCartBtn() 

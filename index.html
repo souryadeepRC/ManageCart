@@ -58,7 +58,7 @@
             <button class="my-1 btn btn-primary" id="AddToCart" disabled>
                 <i class="fa fa-plus"></i>&nbsp;Add Item</button>
             <button class="my-1 btn btn-primary" id="ClearBtn" onClick="clearInputField()" disabled>Clear</button>
-            <button class="my-1 btn btn-primary" id="EmptyCartBtn" onClick="emptyCart()" disabled>Empty Cart</button>
+            
         </div>
 
     </article>
@@ -66,8 +66,9 @@
         <div class="show-cart-button not-print d-flex flex-column justify-content-center py-2 w-75 m-auto">
             <button class="my-1 p-1 btn btn-primary" id="GoBackInputForm" onclick="addMoreItem()">Add more Item</button>
             <button class="my-1 p-1 btn btn-primary" id="PrintReceiptBtn" onclick="printReceipt()">Print Recipt</button>
+            <button class="my-1 p-1 btn btn-primary" id="EmptyCartBtn" onClick="emptyCart()" disabled>Empty Cart</button>
         </div>
-        <h6 class="text-center text-black" id="EmptyCartHeading">Empty Cart</h6>
+        <h6 class="text-center text-black" id="EmptyCartHeading">Your cart is empty now</h6>
         <div class="cart-info">
             <table class="w-90 m-auto">
                 <thead>
